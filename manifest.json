@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Web Component Lens",
+  "version": "1.0",
+  "description": "Explore your web components",
+  "devtools_page": "devtools.html",
+  "icons": {
+    "128": "icon.png"
+  }
+}

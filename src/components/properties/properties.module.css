@@ -1,0 +1,40 @@
+.object-view {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  cursor: default;
+  user-select: none;
+}
+
+.object-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  background-color: #f6f6f6;
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.object-view-span {
+  line-height: normal;
+  font-size: 20px;
+}
+
+.object-view-header:hover {
+  transform: scale(1.02);
+}
+
+.object-view-name {
+  color: #36454f;
+  font-weight: 600;
+  margin-right: 7px;
+}
+
+.object-view-value {
+  color: #708090;
+  font-weight: 500;
+}
