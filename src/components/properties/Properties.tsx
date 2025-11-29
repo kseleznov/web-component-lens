@@ -7,7 +7,18 @@ export function Properties({ name, properties, level = 0 }: TPropertiesProps) {
   const isObject = typeof properties === "object" && properties !== null && Object.keys(properties).length > 0;
 
   function formatValue(value: any) {
-    return Array.isArray(value) ? `Array(${value.length})` : "{…}";
+    if (Array.isArray(value)) {
+      return `Array(${value.length}) [${value.slice(0, 3).map(v => JSON.stringify(v)).join(", ")}${value.length > 3 ? ", …" : ""}]`;
+    }
+  
+    if (typeof value === "object" && value !== null) {
+      const keys = Object.keys(value);
+      const preview = keys.slice(0, 3).map(key => key + ": " + JSON.stringify(value[key]));
+
+      return `{${preview.join(", ")}${keys.length > 3 ? ", …" : ""}}`;
+    }
+  
+    return JSON.stringify(value);
   }
 
   return (
@@ -16,13 +27,9 @@ export function Properties({ name, properties, level = 0 }: TPropertiesProps) {
         className={styles["object-view-header"]}
         onClick={() => isObject && setExpanded(!expanded)}
       >
-        <div>
-          <span className={styles["object-view-name"]}>{name}:</span>
-          <span className={styles["object-view-value"]}>
-            {isObject ? formatValue(properties) : JSON.stringify(properties)}
-          </span>
-        </div>
-        {isObject && <span className={styles["object-view-span"]}>{expanded ? "-" : "+"}</span>}
+        {isObject && <div className={styles["object-view-span"]}>{expanded ? "-" : "+"}</div>}
+        <div className={styles["object-view-name"]}>{name}:</div>
+        <div className={styles["object-view-value"]}>{isObject ? formatValue(properties) : JSON.stringify(properties)}</div>
       </div>
 
       {expanded &&

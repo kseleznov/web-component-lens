@@ -8,19 +8,17 @@
 
 .object-view-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 4px;
   background-color: #f6f6f6;
-  padding: 12px 10px;
   border-radius: 10px;
+  padding-left: 10px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .object-view-span {
-  line-height: normal;
+  height: 25px;
   font-size: 20px;
 }
 
@@ -31,10 +29,16 @@
 .object-view-name {
   color: #36454f;
   font-weight: 600;
-  margin-right: 7px;
+  background-color: #f6f6f6;
+  padding: 12px 0 12px 10px;
+  border-radius: 10px;
 }
 
 .object-view-value {
+  white-space: nowrap;
   color: #708090;
   font-weight: 500;
+  background-color: #f6f6f6;
+  padding: 12px 10px;
+  border-radius: 10px;
 }
